@@ -2,11 +2,12 @@ package ru.kgsu.tornadotest.controllers
 
 import javafx.scene.control.Alert
 import javafx.scene.control.Alert.AlertType
-import javafx.scene.control.ButtonType
 import ru.kgsu.tornadotest.data.Discepline
 import ru.kgsu.tornadotest.data.Student
 import ru.kgsu.tornadotest.data.Teacher
 import ru.kgsu.tornadotest.ui.LoginScreen
+import ru.kgsu.tornadotest.ui.MainTableStudentView
+import ru.kgsu.tornadotest.ui.MainTableTeacherView
 import tornadofx.*
 
 
@@ -14,15 +15,15 @@ class LoginController : Controller() {
     /**
      * Заполнения данных
      * */
-    val teacherLogin: String = "Teacher1"
-    val teacherPWord: String = "1234567"
+    val teacherLogin: String = "T123"
+    val teacherPWord: String = "1234"
     val studentLogin: String = "Student2"
     val studentPWord: String = "7896543"
-    val teacher = Teacher("123456Teacher1", "1234567", "Артур", "Котов")
+    val teacher = Teacher("T123", "1234", "Артур", "Котов")
 
     //val student = Student("7894563Student2","7896543","Aнна","Мишкина",3002222)
-    val disceplineOne = Discepline("Введение в паттерны проектирования", teacher,3.6f);
-    val disceplineTwo = Discepline("Объектно-ориентированное программирование", teacher,3.7f);
+    val disceplineOne = Discepline("Введение в паттерны проектирования", teacher, 3.6f);
+    val disceplineTwo = Discepline("Объектно-ориентированное программирование", teacher, 3.7f);
     val listOfDiscepline = listOf(disceplineOne, disceplineTwo)
     val student =
         Student("7894563Student2", "7896543", "Aнна", "Мишкина", 3002222, listOfDiscepline)
@@ -30,13 +31,14 @@ class LoginController : Controller() {
     fun tryLogin(login: String, password: String) {
         if (login == teacherLogin && password == teacherPWord) {
             showMainTeacherScreen()
+            return
         }
-        if (login ==  studentLogin && password == studentPWord) {
+        if (login == studentLogin && password == studentPWord) {
             showMainStudentScreen()
-        }
-
-        else{
+            return
+        } else {
             showErrorMsg()
+            return
         }
     }
 
@@ -50,10 +52,20 @@ class LoginController : Controller() {
 
     private fun showMainStudentScreen() {
         println("ITSWORKS")
+        find(LoginScreen::class).replaceWith(
+            MainTableStudentView::class,
+            sizeToScene = true,
+            centerOnScreen = true
+        )
+        //find(MainTableView::class).
     }
 
     private fun showMainTeacherScreen() {
-        println("ITSWORKS")
+        find(LoginScreen::class).replaceWith(
+            MainTableTeacherView::class,
+            sizeToScene = true,
+            centerOnScreen = true
+        )
     }
 }
 

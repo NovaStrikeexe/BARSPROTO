@@ -1,0 +1,16 @@
+ vbox {
+                textflow {
+                    text("А где блок КЕС`а ?") {
+                        fill = Color.PURPLE
+                        font = Font(20.0)
+                    }
+                }
+                button("Запрос на интеграцию КЕС").action {
+                    val alert = Alert(Alert.AlertType.ERROR)
+                    alert.title = "Ошибка"
+                    alert.headerText = "Ошибка интеграции"
+                    alert.contentText =
+                        "Мы получили ответ от команды разработчиков КЕС \n \"МЫ ВАМ ПЯТСОТЬ РАЗ ГОВОРИЛИ: БЛОК НАХОДТСЯ В СТАДИИ РАЗРАБОТКИ!!! \nНе Звоните Сюда Больше!!!! \nНЕЗВОНИТЕ!! \""
+                    alert.showAndWait()
+                }
+            }

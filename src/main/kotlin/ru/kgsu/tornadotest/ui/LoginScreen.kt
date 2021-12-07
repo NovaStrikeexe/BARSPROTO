@@ -12,6 +12,8 @@ class LoginScreen : View() {
     val password = SimpleStringProperty(this, "password", config.string("password"))
 
     override val root = form {
+        prefWidth = 800.0
+        prefHeight = 600.0
         fieldset("Авторизация") {
             field("Логин:") { textfield(login) }
             field("Пароль:") { passwordfield(password) }
