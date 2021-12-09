@@ -34,8 +34,4 @@ class LoginScreen : View() {
             }
         }
     }
-
-    fun showMainScreen() {
-        // hide LoginScreen and show the main UI of the application
-    }
 }
