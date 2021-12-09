@@ -4,6 +4,7 @@ import javafx.scene.Parent
 import javafx.scene.control.Alert
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
+import ru.kgsu.tornadotest.controllers.ATSControler
 import ru.kgsu.tornadotest.data.Teacher
 import tornadofx.*
 
@@ -32,9 +33,15 @@ class MainTableTeacherView : View() {
             tab("АПР") {
                 borderpane {
                     left = vbox {
-                        button("Загрузить файл с тестом")
-                        button("Загрузить файл с кодом")
-                        button("Запуск тестов")
+                        button("Загрузить файл с тестом").action {
+                            ATSControler.loadTest()
+                        }
+                        button("Загрузить файл с кодом").action {
+                            ATSControler.loadCode()
+                        }
+                        button("Запуск тестов").action {
+                            ATSControler.launchTest()
+                        }
                     }
                     top = hbox {
                         textflow {
