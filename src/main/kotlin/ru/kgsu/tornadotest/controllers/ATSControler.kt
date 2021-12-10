@@ -1,6 +1,7 @@
 package ru.kgsu.tornadotest.controllers
 
 
+import javafx.scene.control.TextArea
 import javafx.stage.FileChooser
 import ru.kgsu.tornadotest.data.Task
 import ru.kgsu.tornadotest.data.Teacher
@@ -10,12 +11,12 @@ class ATSControler {
     val teacher = Teacher("T123", "1234", "Артур", "Котов")
     val taskOne = Task(
         10001,
-        "Концольный калькулятор на языке Python 3.7",
+        "Концольный калькулятор на языке Python",
         teacher,
-        "Написать программу, " +
-                "которая выполняет над двумя вещественными числами одну из четырех арифметических операций: " +
-                "(сложение, вычитание, умножение или деление). " +
-                "Программа должна завершаться только по желанию пользователя."
+        "Написать программу," +
+                "\nкоторая выполняет над двумя вещественными числами одну из четырех арифметических операций: " +
+                "\n(сложение, вычитание, умножение или деление). " +
+                "\nПрограмма должна завершаться только по желанию пользователя."
     )
     private val typeOfFiles = arrayOf(FileChooser.ExtensionFilter("Document files (*.py)"))
 
@@ -25,28 +26,31 @@ class ATSControler {
             val fileChooser = FileChooser();
             val file = fileChooser.showOpenDialog(null)
         }
+
         //Так это доделать мне (Trigger)
         fun loadCode() {
             val fileChooser = FileChooser();
             val file = fileChooser.showOpenDialog(null)
         }
+
         /***
          * Экз это для тебя задачка
          */
         fun launchTest() {}
+
         //Так это доделать мне (Trigger)
-        fun showTaskText() {
+        fun showTaskText(taskCodeField: TextArea) {
+            taskCodeField.setVisible(true)
         }
 
         /***
          * Мега, это тебе задачка
          */
         fun showStudetCode() {
-
         }
+
         //Пока беру себе
         fun showTestList() {
-
         }
     }
 }

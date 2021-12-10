@@ -1,5 +1,5 @@
 package ru.kgsu.tornadotest.data
 
 
-class Task(numberOfTask: Long, nameOfTask: String, authorOfTask: Teacher, textOfTask:String) {
+class Task(var numberOfTask: Long, var nameOfTask: String, var authorOfTask: Teacher, var textOfTask:String) {
 }
