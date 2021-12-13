@@ -1,10 +1,13 @@
 package ru.kgsu.tornadotest.controllers
 
 
+import ru.kgsu.tornadotest.ui.MainTableTeacherView
+import tornadofx.*
 import javafx.scene.control.TextArea
 import javafx.stage.FileChooser
 import ru.kgsu.tornadotest.data.Task
 import ru.kgsu.tornadotest.data.Teacher
+import ru.kgsu.tornadotest.ui.MarkScreen
 
 class ATSControler {
 
@@ -51,6 +54,14 @@ class ATSControler {
 
         //Пока беру себе
         fun showTestList() {
+        }
+
+        fun showMarkSetter() {
+            find(MainTableTeacherView::class).replaceWith(
+                MarkScreen::class,
+                sizeToScene = true,
+                centerOnScreen = true
+            )
         }
     }
 }
