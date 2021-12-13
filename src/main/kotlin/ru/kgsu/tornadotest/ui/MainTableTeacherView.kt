@@ -1,8 +1,6 @@
 package ru.kgsu.tornadotest.ui
 
-import javafx.geometry.Pos
 import javafx.scene.control.TextArea
-import javafx.scene.effect.DropShadow
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import ru.kgsu.tornadotest.controllers.ATSControler
@@ -65,21 +63,20 @@ class MainTableTeacherView : View() {
                             item("Запуск тестов").action {
                                 ATSControler.launchTest()
                             }
-                            item("Поставить оценку").action {
-                                ATSControler.showMarkSetter()
-                            }
-
                         }
                     }
                 }
                 right = hbox {
                     //taskCodeField.setVisible(false)
                     //taskCodeField =
-                    textarea(
+                    textarea(ATSControler.infoTestProperty){
+                        setMinSize(100.00, 100.00)
+                    }
+                    /*textarea(
                         "Задание номер:${taskOne.numberOfTask}\nНазавние задачи:${taskOne.nameOfTask}\n" +
                                 "Автор задачи: ${taskOne.authorOfTask.name} ${taskOne.authorOfTask.sName}\nТекст задачи: ${taskOne.textOfTask}"
                     ) {
-                    }
+                    }*/
                     //val numbers = (1..10).toList()
                     //Дата грид вью
                     /***datagrid(numbers) {
@@ -109,7 +106,6 @@ class MainTableTeacherView : View() {
                             font = Font(20.0)
                         }
                     }
-
                 }
             }
         }

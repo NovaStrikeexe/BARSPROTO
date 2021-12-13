@@ -1,13 +1,13 @@
 package ru.kgsu.tornadotest.controllers
 
 
-import ru.kgsu.tornadotest.ui.MainTableTeacherView
-import tornadofx.*
+import javafx.beans.property.SimpleStringProperty
 import javafx.scene.control.TextArea
 import javafx.stage.FileChooser
 import ru.kgsu.tornadotest.data.Task
 import ru.kgsu.tornadotest.data.Teacher
-import ru.kgsu.tornadotest.ui.MarkScreen
+import tornadofx.chooseFile
+import java.io.File
 
 class ATSControler {
 
@@ -24,16 +24,26 @@ class ATSControler {
     private val typeOfFiles = arrayOf(FileChooser.ExtensionFilter("Document files (*.py)"))
 
     companion object {
+        var file = ""
+        val infoTestProperty = SimpleStringProperty("Задание номер:10001\nНазавние задачи:Концольный калькулятор на языке Python\n" +
+                "Автор задачи: Артур Котов\nТекст задачи: Написать программу,\n" +
+                "которая выполняет над двумя вещественными числами одну из четырех арифметических операций: \n" +
+                "(сложение, вычитание, умножение или деление). \n" +
+                "Программа должна завершаться только по желанию пользователя.")
+
         //Так это доделать мне (Trigger)
         fun loadTest() {
-            val fileChooser = FileChooser();
-            val file = fileChooser.showOpenDialog(null)
+            val files = chooseFile("",
+                arrayOf(FileChooser.ExtensionFilter("Document files (*.py)", "*.py")))
         }
 
         //Так это доделать мне (Trigger)
         fun loadCode() {
-            val fileChooser = FileChooser();
-            val file = fileChooser.showOpenDialog(null)
+            val files = chooseFile("",
+                arrayOf(FileChooser.ExtensionFilter("Document files (*.py)", "*.py")))
+            file = files[0].toString()
+
+            checkCode()
         }
 
         /***
@@ -50,18 +60,26 @@ class ATSControler {
          * Мега, это тебе задачка
          */
         fun showStudetCode() {
+            infoTestProperty.set(File(file).readText())
+        }
+
+
+        private fun showCheckCode() {
+            infoTestProperty.set(File("log.txt").readText())
+        }
+
+        private fun checkCode() {
+            var checkFileStart = File("check.bat")
+            checkFileStart.createNewFile()
+            checkFileStart.writeText("flake8 $file > log.txt")
+
+            Runtime.getRuntime().exec("check.bat")
+
+            showCheckCode()
         }
 
         //Пока беру себе
         fun showTestList() {
-        }
-
-        fun showMarkSetter() {
-            find(MainTableTeacherView::class).replaceWith(
-                MarkScreen::class,
-                sizeToScene = true,
-                centerOnScreen = true
-            )
         }
     }
 }
