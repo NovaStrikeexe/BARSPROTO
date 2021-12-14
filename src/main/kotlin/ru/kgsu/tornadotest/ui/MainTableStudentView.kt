@@ -1,6 +1,5 @@
 package ru.kgsu.tornadotest.ui
 
-import javafx.scene.Parent
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import ru.kgsu.tornadotest.data.Discepline
@@ -37,22 +36,23 @@ class MainTableStudentView() : View() {
 
             tab("АПР") {
                 borderpane {
-                    left = vbox {
-                        button("Загрузить файл с тестом")
-                        button("Загрузить файл с кодом")
-                        button("Запуск тестов")
-                    }
-                    top = hbox {
-                        textflow {
-                            text(
-                                "Пользователь: \n${teacher.name}\n" +
-                                        "${teacher.sName}"
-                            ) {
-                                fill = Color.PURPLE
-                                font = Font(20.0)
-                            }
+                    center = APRView().root
+/*                left = vbox {
+                    button("Загрузить файл с тестом")
+                    button("Загрузить файл с кодом")
+                    button("Запуск тестов")
+                }
+                top = hbox {
+                    textflow {
+                        text(
+                            "Пользователь: \n${teacher.name}\n" +
+                                    "${teacher.sName}"
+                        ) {
+                            fill = Color.PURPLE
+                            font = Font(20.0)
                         }
                     }
+                }*/
                 }
             }
 
