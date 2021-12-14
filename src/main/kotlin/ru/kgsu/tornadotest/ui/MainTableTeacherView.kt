@@ -4,6 +4,7 @@ import javafx.scene.control.TextArea
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import ru.kgsu.tornadotest.controllers.ATSControler
+import ru.kgsu.tornadotest.controllers.MainTableStudentController
 import ru.kgsu.tornadotest.data.Task
 import ru.kgsu.tornadotest.data.Teacher
 import tornadofx.*

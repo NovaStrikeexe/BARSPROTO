@@ -3,7 +3,6 @@ package ru.kgsu.tornadotest.ui
 import javafx.beans.property.SimpleStringProperty
 import javafx.scene.control.Alert
 import ru.kgsu.tornadotest.controllers.LoginController
-import ru.kgsu.tornadotest.data.User
 import tornadofx.*
 
 class LoginScreen : View() {

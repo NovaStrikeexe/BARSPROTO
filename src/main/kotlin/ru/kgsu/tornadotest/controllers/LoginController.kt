@@ -2,8 +2,6 @@ package ru.kgsu.tornadotest.controllers
 
 import javafx.scene.control.Alert
 import javafx.scene.control.Alert.AlertType
-import ru.kgsu.tornadotest.data.Discepline
-import ru.kgsu.tornadotest.data.Student
 import ru.kgsu.tornadotest.data.Teacher
 import ru.kgsu.tornadotest.ui.LoginScreen
 import ru.kgsu.tornadotest.ui.MainTableStudentView
@@ -22,8 +20,6 @@ class LoginController : Controller() {
     val teacher = Teacher("T123", "1234", "Артур", "Котов")
 
     //val student = Student("7894563Student2","7896543","Aнна","Мишкина",3002222)
-
-
 
     fun tryLogin(login: String, password: String) {
         if (login == teacherLogin && password == teacherPWord) {
