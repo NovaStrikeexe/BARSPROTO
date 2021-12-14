@@ -8,6 +8,9 @@ import tornadofx.*
 
 class MarkScreen : View() {
     override val root = form {
+        prefWidth = 350.0
+        prefHeight = 450.0
+
         var codeClean: TextField by singleAssign()
         var codeFun: TextField by singleAssign()
         var codeFlex: TextField by singleAssign()
@@ -15,7 +18,6 @@ class MarkScreen : View() {
         var isCodeCopy: Boolean = false
         val toggleGroup = ToggleGroup()
         vbox {
-
             //По хорошему это все нужно делать с базой
             //Но хей мы как обычно
             label("Итог по заданию: 10001 \nСтудента(тки) \'Aнна Мишкина\'\n по дисцеплине:\n \' Вводный курс по прогрмированию \' ")
@@ -34,9 +36,15 @@ class MarkScreen : View() {
                 alert(
                     Alert.AlertType.INFORMATION,
                     "Внимание",
-                    "Текущий балл студента(тки): 'Aнна Мишкина'\n" +
-                            " по дисцеплине: " + getMark(codeClean, codeFun, codeFlex, codeTestPass, isCodeCopy) + "\n" +
-                            " ' Вводный курс по прогрмированию ' был изменен.",
+                    "Балл студента(тки): 'Aнна Мишкина'\n" +
+                            " по задаче:10001 Составляет: " + getMark(
+                        codeClean,
+                        codeFun,
+                        codeFlex,
+                        codeTestPass,
+                        isCodeCopy
+                    ) + "\n" +
+                            "Бал по дисцеплине:\n\'Вводный курс по прогрмированию\' был изменен.",
                     owner = currentWindow
                 )
 

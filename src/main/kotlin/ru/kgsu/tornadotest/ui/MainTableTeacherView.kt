@@ -1,5 +1,9 @@
 package ru.kgsu.tornadotest.ui
 
+import javafx.beans.property.SimpleStringProperty
+import javafx.geometry.Pos
+import javafx.scene.control.Alert
+import javafx.scene.control.Tab
 import javafx.scene.control.TextArea
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
@@ -25,76 +29,82 @@ class MainTableTeacherView : View() {
         prefWidth = 800.0
         prefHeight = 600.0
         tab("БРС") {
+            isClosable = false
             vbox {
                 textflow {
-                    text(
-                        "Пользователь: \n${teacher.name}" +
-                                "${teacher.sName}"
-                    ) {
+                    text("Пользователь:${teacher.name}" + "${teacher.sName}") {
                         fill = Color.PURPLE
                         font = Font(20.0)
+                    }
+                    separator {
+
                     }
                 }
                 button("Button 1")
                 button("Button 2")
             }
         }
-        tab("КЕС") {//Сюда чето запихть чтобы было//
+        tab("КЕС") {
+            isClosable = false//Сюда чето запихть чтобы было//
         }
         tab("АПР") {
+            isClosable = false
             borderpane {
                 left = vbox {
-                    menubar {
-                        menu("Меню") {
-                            item("Просмотр условия задачи").action {
-                                //ATSControler.showTaskText(taskCodeField)
-                                /**
-                                 * Необходима доработка
-                                 * */
-                            }
-                            item("Просмотр файла с кодом").action {
-                                ATSControler.showStudetCode()
-                            }
-                            item("Просмотр тестового набора").action {
-                                ATSControler.showTestList()
-                            }
-                            item("Загрузить файл с тестом").action {
-                                ATSControler.loadTest()
-                            }
-                            item("Загрузить файл с кодом").action {
-                                ATSControler.loadCode()
-                            }
-                            item("Показать резульатат статического тестирование:").action {
-                                ATSControler.checkCode()
-                            }
-                            item("Запуск тестов").action {
-                                ATSControler.launchTest()
-                            }
-                            item("Поставить оценку").action {
-                                ATSControler.showMarkSetter()
-                            }
-                        }
-                    }
-                }
-                right = hbox {
-                    //taskCodeField.setVisible(false)
-                    //taskCodeField =
-                    textarea(ATSControler.infoTestProperty) {
-                        setMinSize(100.00, 100.00)
-                    }
-                }
-                top = hbox {
                     textflow {
                         text(
-                            "Пользователь: \n${teacher.name} " +
-                                    "${teacher.sName}"
+                            "Пользователь: ${teacher.name} " + "${teacher.sName}"
                         ) {
                             fill = Color.PURPLE
                             font = Font(20.0)
                         }
+
+                    }
+                    separator {
+
+                    }
+                    button("Просмотр условия задачи").action {
+                        alert(
+                            Alert.AlertType.INFORMATION,
+                            "Условие задачи: ${taskOne.numberOfTask}",
+                            "${taskOne.textOfTask}",
+                            owner = currentWindow
+                        )
+                    }
+                    button("Загрузить файл с кодом").action {
+                        ATSControler.loadCode()
+                    }
+                    button("Просмотр файла с кодом").action {
+                        ATSControler.showStudetCode()
+                    }
+                    button("Загрузить файл с тестом").action {
+                        ATSControler.loadTest()
+                    }
+                    button("Просмотр тестового набора").action {
+                        ATSControler.showTestList()
+                    }
+                    button("Показать резульатат статического тестирование").action {
+                        ATSControler.checkCode()
+                    }
+                    button("Запуск авто-тестов тестов").action {
+                        ATSControler.launchTest()
+                    }
+                    button("Поставить оценку").action {
+                        ATSControler.showMarkSetter()
+                    }
+                }
+                center = pane {
+                    setMinSize(500.0, 500.0)
+                    setMaxSize(1000.0, 1000.0)
+                    textarea(ATSControler.infoTestProperty) {
+                        setMinSize(500.0, 500.0)
+                        setMaxSize(1000.0, 1000.0)
+                        isEditable = false
+
                     }
                 }
             }
+
         }
 
     }
