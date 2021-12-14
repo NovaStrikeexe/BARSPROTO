@@ -1,6 +1,5 @@
 package ru.kgsu.tornadotest.ui
 
-import javafx.scene.Parent
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import ru.kgsu.tornadotest.controllers.MainTableStudentController
@@ -21,6 +20,7 @@ class MainTableStudentView() : View() {
         prefWidth = 800.0
         prefHeight = 600.0
         tab("БРС") {
+            isClosable = false
             vbox {
                 textflow {
                     text(
@@ -37,6 +37,12 @@ class MainTableStudentView() : View() {
                 button("Оценки").action {
                     mainTableStudentController.ShowStudentMarks()
                 }
+            }
+        }
+        tab("Проверить") {
+            isClosable = false
+            borderpane {
+                center = APRView().root
             }
         }
 //        tab("КЕС") {//Сюда чето запихть чтобы было// }
