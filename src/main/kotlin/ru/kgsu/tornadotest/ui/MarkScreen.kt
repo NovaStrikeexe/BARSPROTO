@@ -35,23 +35,31 @@ class MarkScreen : View() {
                     Alert.AlertType.INFORMATION,
                     "Внимание",
                     "Текущий балл студента(тки): 'Aнна Мишкина'\n" +
-                            " по дисцеплине:\n" +
+                            " по дисцеплине: " + getMark(codeClean, codeFun, codeFlex, codeTestPass, isCodeCopy) + "\n" +
                             " ' Вводный курс по прогрмированию ' был изменен.",
                     owner = currentWindow
                 )
-                //Артур тут твой выход
-                println( MarkScreenControler.setMark(
-                    codeClean.text.toFloat(),
-                    codeFun.text.toFloat(),
-                    codeFlex.text.toFloat(),
-                    codeTestPass.text.toFloat(),
-                    isCodeCopy
-                ))
 
             }
             button("Вернуться на главный экран").action {
                 MarkScreenControler.backToMainView()
             }
         }
+    }
+
+    private fun getMark(
+        codeClean: TextField,
+        codeFun: TextField,
+        codeFlex: TextField,
+        codeTestPass: TextField,
+        isCodeCopy: Boolean
+    ): Float {
+        return MarkScreenControler.setMark(
+            codeClean.text.toFloat(),
+            codeFun.text.toFloat(),
+            codeFlex.text.toFloat(),
+            codeTestPass.text.toFloat(),
+            isCodeCopy
+        )
     }
 }

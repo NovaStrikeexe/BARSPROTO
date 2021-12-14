@@ -10,7 +10,6 @@ class StudentDisceplinesView : View() {
     val teacher = Teacher("T123", "1234", "Артур", "Котов")
     val disceplineOne = Discepline("Введение в паттерны проектирования", teacher, 3.6f)
     val disceplineTwo = Discepline("Объектно-ориентированное программирование", teacher, 3.7f)
-    val listOfDiscepline = listOf(disceplineOne, disceplineTwo)
 
     override val root = form {
         prefWidth = 800.0
@@ -18,12 +17,18 @@ class StudentDisceplinesView : View() {
         vbox {
             hbox {
                 text(
-                    "Дисциплины студента"
+                    "Предметы студента"
                 )
                 button("Назад").action {
                     studentDisceplinesController.goBack()
                 }
             }
+            listview<String> {
+                items.add(getRow(disceplineOne))
+                items.add(getRow(disceplineTwo))
+            }
         }
     }
+
+    private fun getRow(discepline: Discepline) = discepline.dName + " - " + discepline.dTeacher.name + " " + discepline.dTeacher.sName
 }
