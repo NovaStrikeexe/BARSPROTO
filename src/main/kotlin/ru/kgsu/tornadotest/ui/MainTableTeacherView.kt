@@ -28,7 +28,7 @@ class MainTableTeacherView : View() {
             vbox {
                 textflow {
                     text(
-                        "Пользователь: \n${teacher.name}\n" +
+                        "Пользователь: \n${teacher.name}" +
                                 "${teacher.sName}"
                     ) {
                         fill = Color.PURPLE
@@ -47,9 +47,12 @@ class MainTableTeacherView : View() {
                     menubar {
                         menu("Меню") {
                             item("Просмотр условия задачи").action {
-                                ATSControler.showTaskText(taskCodeField)
+                                //ATSControler.showTaskText(taskCodeField)
+                                /**
+                                 * Необходима доработка
+                                 * */
                             }
-                            item("Просмотр кода").action {
+                            item("Просмотр файла с кодом").action {
                                 ATSControler.showStudetCode()
                             }
                             item("Просмотр тестового набора").action {
@@ -61,8 +64,14 @@ class MainTableTeacherView : View() {
                             item("Загрузить файл с кодом").action {
                                 ATSControler.loadCode()
                             }
+                            item("Показать резульатат статического тестирование:").action {
+                                ATSControler.checkCode()
+                            }
                             item("Запуск тестов").action {
                                 ATSControler.launchTest()
+                            }
+                            item("Поставить оценку").action {
+                                ATSControler.showMarkSetter()
                             }
                         }
                     }
@@ -70,32 +79,9 @@ class MainTableTeacherView : View() {
                 right = hbox {
                     //taskCodeField.setVisible(false)
                     //taskCodeField =
-                    textarea(ATSControler.infoTestProperty){
+                    textarea(ATSControler.infoTestProperty) {
                         setMinSize(100.00, 100.00)
                     }
-                    /*textarea(
-                        "Задание номер:${taskOne.numberOfTask}\nНазавние задачи:${taskOne.nameOfTask}\n" +
-                                "Автор задачи: ${taskOne.authorOfTask.name} ${taskOne.authorOfTask.sName}\nТекст задачи: ${taskOne.textOfTask}"
-                    ) {
-                    }*/
-                    //val numbers = (1..10).toList()
-                    //Дата грид вью
-                    /***datagrid(numbers) {
-                    cellHeight = 75.0
-                    cellWidth = 75.0
-
-                    multiSelect = true
-
-                    cellCache {
-                    stackpane {
-                    circle(radius = 25.0) {
-                    fill = Color.FORESTGREEN
-                    }
-                    label(it.toString())
-                    }
-                    }
-                    }*/
-
                 }
                 top = hbox {
                     textflow {
