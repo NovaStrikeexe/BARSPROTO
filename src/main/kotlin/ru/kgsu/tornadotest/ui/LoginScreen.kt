@@ -3,7 +3,6 @@ package ru.kgsu.tornadotest.ui
 import javafx.beans.property.SimpleStringProperty
 import javafx.scene.control.Alert
 import ru.kgsu.tornadotest.controllers.LoginController
-import ru.kgsu.tornadotest.data.User
 import tornadofx.*
 
 class LoginScreen : View() {
@@ -12,8 +11,8 @@ class LoginScreen : View() {
     val password = SimpleStringProperty(this, "password", config.string("password"))
 
     override val root = form {
-        prefWidth = 800.0
-        prefHeight = 600.0
+        prefWidth = 350.0
+        prefHeight = 150.0
         fieldset("Авторизация") {
             field("Логин:") { textfield(login) }
             field("Пароль:") { passwordfield(password) }

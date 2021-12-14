@@ -3,6 +3,7 @@ package ru.kgsu.tornadotest.controllers
 import ru.kgsu.tornadotest.ui.MainTableTeacherView
 import tornadofx.*
 import javafx.beans.property.SimpleStringProperty
+import javafx.scene.control.Tab
 import javafx.scene.control.TextArea
 import javafx.stage.FileChooser
 import ru.kgsu.tornadotest.data.Task
@@ -27,13 +28,7 @@ class ATSControler {
 
     companion object {
         var file = ""
-        val infoTestProperty = SimpleStringProperty(
-            "Задание номер:10001\nНазавние задачи:Концольный калькулятор на языке Python\n" +
-                    "Автор задачи: Артур Котов\nТекст задачи: Написать программу,\n" +
-                    "которая выполняет над двумя вещественными числами одну из четырех арифметических операций: \n" +
-                    "(сложение, вычитание, умножение или деление). \n" +
-                    "Программа должна завершаться только по желанию пользователя."
-        )
+        val infoTestProperty = SimpleStringProperty()
 
         /***
          * Мега выполнил свои задачи. Лекс тут нужен твой допил
@@ -102,6 +97,7 @@ class ATSControler {
         }
 
         fun showMarkSetter() {
+
             find(MainTableTeacherView::class).replaceWith(
                 MarkScreen::class,
                 sizeToScene = true,
