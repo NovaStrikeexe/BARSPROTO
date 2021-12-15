@@ -1,15 +1,15 @@
-.\PythonCodes\123.py:1:1: D100 Missing docstring in public module
-.\PythonCodes\123.py:3:1: C901 'Loop 3' is too complex (9)
-.\PythonCodes\123.py:4:5: VNE001 single letter variable names like 's' are not allowed
-.\PythonCodes\123.py:5:13: Q000 Single quotes found but double quotes preferred
-.\PythonCodes\123.py:7:14: Q000 Single quotes found but double quotes preferred
-.\PythonCodes\123.py:7:19: Q000 Single quotes found but double quotes preferred
-.\PythonCodes\123.py:7:24: Q000 Single quotes found but double quotes preferred
-.\PythonCodes\123.py:7:29: Q000 Single quotes found but double quotes preferred
-.\PythonCodes\123.py:8:9: VNE001 single letter variable names like 'x' are not allowed
-.\PythonCodes\123.py:9:9: VNE001 single letter variable names like 'y' are not allowed
-.\PythonCodes\123.py:10:17: Q000 Single quotes found but double quotes preferred
-.\PythonCodes\123.py:12:19: Q000 Single quotes found but double quotes preferred
-.\PythonCodes\123.py:14:19: Q000 Single quotes found but double quotes preferred
-.\PythonCodes\123.py:16:19: Q000 Single quotes found but double quotes preferred
-.\PythonCodes\123.py:22:41: W292 no newline at end of file
+F:\Study\TornadoTest\PythonCodes\123.py:1:1: D100 Missing docstring in public module
+F:\Study\TornadoTest\PythonCodes\123.py:3:1: C901 'Loop 3' is too complex (9)
+F:\Study\TornadoTest\PythonCodes\123.py:4:5: VNE001 single letter variable names like 's' are not allowed
+F:\Study\TornadoTest\PythonCodes\123.py:5:13: Q000 Single quotes found but double quotes preferred
+F:\Study\TornadoTest\PythonCodes\123.py:7:14: Q000 Single quotes found but double quotes preferred
+F:\Study\TornadoTest\PythonCodes\123.py:7:19: Q000 Single quotes found but double quotes preferred
+F:\Study\TornadoTest\PythonCodes\123.py:7:24: Q000 Single quotes found but double quotes preferred
+F:\Study\TornadoTest\PythonCodes\123.py:7:29: Q000 Single quotes found but double quotes preferred
+F:\Study\TornadoTest\PythonCodes\123.py:8:9: VNE001 single letter variable names like 'x' are not allowed
+F:\Study\TornadoTest\PythonCodes\123.py:9:9: VNE001 single letter variable names like 'y' are not allowed
+F:\Study\TornadoTest\PythonCodes\123.py:10:17: Q000 Single quotes found but double quotes preferred
+F:\Study\TornadoTest\PythonCodes\123.py:12:19: Q000 Single quotes found but double quotes preferred
+F:\Study\TornadoTest\PythonCodes\123.py:14:19: Q000 Single quotes found but double quotes preferred
+F:\Study\TornadoTest\PythonCodes\123.py:16:19: Q000 Single quotes found but double quotes preferred
+F:\Study\TornadoTest\PythonCodes\123.py:22:41: W292 no newline at end of file
