@@ -27,6 +27,7 @@ class StudentMarksView : View() {
                 items.add(getRow(disceplineOne))
                 items.add(getRow(disceplineTwo))
             }
+
         }
     }
 
