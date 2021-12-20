@@ -15,7 +15,7 @@ class MainTableStudentView() : View() {
     val disceplineTwo = Discepline("Объектно-ориентированное программирование", teacher, 3.7f);
     val listOfDiscepline = listOf(disceplineOne, disceplineTwo)
     val student =
-        Student("7894563Student2", "7896543", "Aнна Мишкина", 3002222, listOfDiscepline)
+        Student("7894563Student2", "7896543", "Aнна Мишкина", 3002222, listOfDiscepline,3.5F,4.2F)
     override val root = tabpane {
         prefWidth = 800.0
         prefHeight = 600.0
@@ -24,7 +24,7 @@ class MainTableStudentView() : View() {
             vbox {
                 textflow {
                     text(
-                        "Пользователь: ${student.fio}"
+                        "Пользователь:${student.fio}"
                     ) {
                         fill = Color.PURPLE
                         font = Font(20.0)
