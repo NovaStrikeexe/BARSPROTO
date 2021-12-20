@@ -17,7 +17,7 @@ class LoginController : Controller() {
     val teacherPWord: String = "1234"
     val studentLogin: String = "S"
     val studentPWord: String = "1234"
-    val teacher = Teacher("T123", "1234", "Артур", "Котов")
+    val teacher = Teacher("T123", "1234", "Артур Котов")
 
     //val student = Student("7894563Student2","7896543","Aнна","Мишкина",3002222)
 

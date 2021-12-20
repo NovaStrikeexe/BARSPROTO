@@ -14,7 +14,7 @@ import ru.kgsu.tornadotest.data.Teacher
 import tornadofx.*
 
 class MainTableTeacherView : View() {
-    val teacher = Teacher("T123", "1234", "Артур", "Котов")
+    val teacher = Teacher("T123", "1234", "Артур Котов")
     val taskOne = Task(
         10001,
         "Концольный калькулятор на языке Python",
@@ -32,7 +32,7 @@ class MainTableTeacherView : View() {
             isClosable = false
             vbox {
                 textflow {
-                    text("Пользователь:${teacher.name}" + "${teacher.sName}") {
+                    text("Пользователь:${teacher.fio}") {
                         fill = Color.PURPLE
                         font = Font(20.0)
                     }
@@ -53,7 +53,7 @@ class MainTableTeacherView : View() {
                 left = vbox {
                     textflow {
                         text(
-                            "Пользователь: ${teacher.name} " + "${teacher.sName}"
+                            "Пользователь: ${teacher.fio}"
                         ) {
                             fill = Color.PURPLE
                             font = Font(20.0)
@@ -70,6 +70,9 @@ class MainTableTeacherView : View() {
                             "${taskOne.textOfTask}",
                             owner = currentWindow
                         )
+                    }
+                    button("Показать результаты авто тестирования").action {
+                        ATSControler.showAutoTestResult()
                     }
                     button("Загрузить файл с кодом").action {
                         ATSControler.loadCode()
