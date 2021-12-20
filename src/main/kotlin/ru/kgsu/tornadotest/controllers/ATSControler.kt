@@ -14,7 +14,7 @@ import java.io.File
 
 class ATSControler {
 
-    val teacher = Teacher("T123", "1234", "Артур", "Котов")
+    val teacher = Teacher("T123", "1234", "Артур Котов")
     val taskOne = Task(
         10001,
         "Концольный калькулятор на языке Python",
@@ -103,6 +103,10 @@ class ATSControler {
                 sizeToScene = true,
                 centerOnScreen = true
             )
+        }
+
+        fun showAutoTestResult() {
+            TODO("Not yet implemented")
         }
     }
 }

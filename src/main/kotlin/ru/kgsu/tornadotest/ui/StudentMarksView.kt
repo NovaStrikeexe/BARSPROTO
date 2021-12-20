@@ -7,7 +7,7 @@ import tornadofx.*
 
 class StudentMarksView : View() {
     val studentMarksController: StudentMarksController by inject()
-    val teacher = Teacher("T123", "1234", "Артур", "Котов")
+    val teacher = Teacher("T123", "1234", "Артур Котов")
     val disceplineOne = Discepline("Введение в паттерны проектирования", teacher, 3.6f)
     val disceplineTwo = Discepline("Объектно-ориентированное программирование", teacher, 3.7f)
 

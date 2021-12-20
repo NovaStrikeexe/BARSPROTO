@@ -5,12 +5,10 @@ import java.time.LocalDate
 class Student(
     login: String,
     pWord: String,
-    name: String,
-    sName: String,
+    fio: String,
     var numberOfGrp: Long,
     var dListName: List<Discepline>)
 : User(
-    login, pWord, name,
-    sName
+    login, pWord, fio
 ) {
 }
