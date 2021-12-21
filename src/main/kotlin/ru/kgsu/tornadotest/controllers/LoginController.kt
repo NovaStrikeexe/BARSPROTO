@@ -6,7 +6,7 @@ import ru.kgsu.tornadotest.data.Teacher
 import ru.kgsu.tornadotest.ui.LoginScreen
 import ru.kgsu.tornadotest.ui.MainTableStudentView
 import ru.kgsu.tornadotest.ui.MainTableTeacherView
-import tornadofx.*
+import tornadofx.Controller
 
 
 class LoginController : Controller() {
@@ -21,7 +21,7 @@ class LoginController : Controller() {
 
     //val student = Student("7894563Student2","7896543","Aнна","Мишкина",3002222)
 
-    fun tryLogin(login: String, password: String) {
+    fun tryLogin(login: String?, password: String?) {
         if (login == teacherLogin && password == teacherPWord) {
             showMainTeacherScreen()
             return
@@ -30,7 +30,9 @@ class LoginController : Controller() {
             showMainStudentScreen()
             return
         } else {
-            showErrorMsg()
+            //TODO: Убрать в RC
+            showMainStudentScreen()
+            //showErrorMsg()
             return
         }
     }
@@ -44,7 +46,6 @@ class LoginController : Controller() {
     }
 
     private fun showMainStudentScreen() {
-        println("ITSWORKS")
         find(LoginScreen::class).replaceWith(
             MainTableStudentView::class,
             sizeToScene = true,
