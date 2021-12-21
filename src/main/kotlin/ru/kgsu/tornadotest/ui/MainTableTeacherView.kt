@@ -1,19 +1,17 @@
 package ru.kgsu.tornadotest.ui
 
-import javafx.beans.property.SimpleStringProperty
-import javafx.geometry.Pos
 import javafx.scene.control.Alert
-import javafx.scene.control.Tab
 import javafx.scene.control.TextArea
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
-import ru.kgsu.tornadotest.controllers.ATSControler
-import ru.kgsu.tornadotest.controllers.MainTableStudentController
+import ru.kgsu.tornadotest.controllers.ATSController
 import ru.kgsu.tornadotest.data.Task
 import ru.kgsu.tornadotest.data.Teacher
 import tornadofx.*
 
 class MainTableTeacherView : View() {
+    val controller: ATSController by inject()
+
     val teacher = Teacher("T123", "1234", "Артур Котов")
     val taskOne = Task(
         10001,
@@ -76,40 +74,40 @@ class MainTableTeacherView : View() {
                         )
                     }
                     button("Загрузить файл с кодом").action {
-                        ATSControler.loadCode()
+                        ATSController.loadCode()
                     }
                     button("Просмотр файла с кодом") {
                         disableWhen {
-                            ATSControler.enableFileProperty
+                            ATSController.enableFileProperty
                         }
 
                         action {
-                            ATSControler.showStudetCode()
+                            ATSController.showStudetCode()
                         }
                     }
                     button("Загрузить файл с тестом").action {
-                        ATSControler.loadTest()
+                        ATSController.loadTest()
                     }
                     button("Просмотр тестового набора").action {
-                        ATSControler.showTestList()
+                        controller.showTestList()
                     }
                     button("Показать резульатат статического тестирование") {
                         disableWhen {
-                            ATSControler.enableFileProperty
+                            ATSController.enableFileProperty
                         }
 
                         action {
-                            ATSControler.checkCode()
+                            ATSController.checkCode()
                         }
                     }
                     button("Поставить оценку").action {
-                        ATSControler.showMarkSetter()
+                        ATSController.showMarkSetter()
                     }
                 }
                 center = pane {
                     setMinSize(500.0, 500.0)
                     setMaxSize(1000.0, 1000.0)
-                    textarea(ATSControler.infoTestProperty) {
+                    textarea(ATSController.mainTextProperty) {
                         setMinSize(500.0, 500.0)
                         setMaxSize(1000.0, 1000.0)
                         isEditable = false
