@@ -17,6 +17,7 @@ class MainTableTeacherView : View() {
     val teacher = Teacher("T123", "1234", "Артур Котов")
     val taskOne = Task(
         10001,
+        "Лабораторная работа",
         "Концольный калькулятор на языке Python",
         teacher,
         "Написать программу," +
@@ -61,7 +62,6 @@ class MainTableTeacherView : View() {
 
                     }
                     separator {
-
                     }
                     button("Просмотр условия задачи").action {
                         alert(

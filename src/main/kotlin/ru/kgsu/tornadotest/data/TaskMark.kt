@@ -1,10 +1,9 @@
 package ru.kgsu.tornadotest.data
 
 class TaskMark(
-    var numberOfTask: Long,
-    var nameOfTask: String,
+    var Task: Task,
     var authorOfTask: Teacher,
-    var responsibleExecutor: Student,
+    var responsibleExecutor: StudentTaskTry,
     var mark: Float
 ) {
 }

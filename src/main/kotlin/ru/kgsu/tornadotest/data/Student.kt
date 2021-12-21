@@ -7,9 +7,7 @@ class Student(
     pWord: String,
     fio: String,
     var numberOfGrp: Long,
-    var dListName: List<Discepline>,
-    val sMarkVPP: Float,
-    val sMarkOOP: Float)
+    var dListName: List<Discepline>)
 : User(
     login, pWord, fio
 ) {

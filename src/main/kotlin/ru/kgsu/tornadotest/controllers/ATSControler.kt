@@ -3,6 +3,7 @@ package ru.kgsu.tornadotest.controllers
 import ru.kgsu.tornadotest.ui.MainTableTeacherView
 import tornadofx.*
 import javafx.beans.property.SimpleStringProperty
+import javafx.scene.control.Alert
 import javafx.scene.control.Tab
 import javafx.scene.control.TextArea
 import javafx.stage.FileChooser
@@ -17,6 +18,7 @@ class ATSControler {
     val teacher = Teacher("T123", "1234", "Артур Котов")
     val taskOne = Task(
         10001,
+        "Лабораторная работа",
         "Концольный калькулятор на языке Python",
         teacher,
         "Написать программу," +
@@ -24,6 +26,7 @@ class ATSControler {
                 "\n(сложение, вычитание, умножение или деление). " +
                 "\nПрограмма должна завершаться только по желанию пользователя."
     )
+
     private val typeOfFiles = arrayOf(FileChooser.ExtensionFilter("Document files (*.py)"))
 
     companion object {
@@ -106,7 +109,24 @@ class ATSControler {
         }
 
         fun showAutoTestResult() {
-            TODO("Not yet implemented")
+
+        }
+
+        fun findTask(nmbOfTask: String) {
+            if (nmbOfTask != "10001"){
+                alert(
+                    Alert.AlertType.ERROR,
+                    "Ошибка",
+                    "Задание с данным номером не найдено"
+                )
+            }
+            else{
+                alert(
+                    Alert.AlertType.INFORMATION,
+                    "Информация",
+                    "Задание с данным номером найдено"
+                )
+            }
         }
     }
 }
