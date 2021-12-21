@@ -52,6 +52,10 @@ class MainTableTeacherView : View() {
             isClosable = false
             borderpane {
                 left = vbox {
+                    spacing = 7.0
+                    paddingLeft = 5
+                    paddingRight = 5
+
                     textflow {
                         text(
                             "Пользователь: ${teacher.fio}"
@@ -71,14 +75,17 @@ class MainTableTeacherView : View() {
                             owner = currentWindow
                         )
                     }
-                    button("Показать результаты авто тестирования").action {
-                        ATSControler.showAutoTestResult()
-                    }
                     button("Загрузить файл с кодом").action {
                         ATSControler.loadCode()
                     }
-                    button("Просмотр файла с кодом").action {
-                        ATSControler.showStudetCode()
+                    button("Просмотр файла с кодом") {
+                        disableWhen {
+                            ATSControler.enableFileProperty
+                        }
+
+                        action {
+                            ATSControler.showStudetCode()
+                        }
                     }
                     button("Загрузить файл с тестом").action {
                         ATSControler.loadTest()
@@ -86,11 +93,14 @@ class MainTableTeacherView : View() {
                     button("Просмотр тестового набора").action {
                         ATSControler.showTestList()
                     }
-                    button("Показать резульатат статического тестирование").action {
-                        ATSControler.checkCode()
-                    }
-                    button("Запуск авто-тестов тестов").action {
-                        ATSControler.launchTest()
+                    button("Показать резульатат статического тестирование") {
+                        disableWhen {
+                            ATSControler.enableFileProperty
+                        }
+
+                        action {
+                            ATSControler.checkCode()
+                        }
                     }
                     button("Поставить оценку").action {
                         ATSControler.showMarkSetter()

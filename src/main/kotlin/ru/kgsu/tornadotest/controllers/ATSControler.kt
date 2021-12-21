@@ -1,5 +1,6 @@
 package ru.kgsu.tornadotest.controllers
 
+import javafx.beans.property.SimpleBooleanProperty
 import ru.kgsu.tornadotest.ui.MainTableTeacherView
 import tornadofx.*
 import javafx.beans.property.SimpleStringProperty
@@ -32,6 +33,7 @@ class ATSControler {
     companion object {
         var file = ""
         val infoTestProperty = SimpleStringProperty()
+        val enableFileProperty = SimpleBooleanProperty(true)
 
         /***
          * Мега выполнил свои задачи. Лекс тут нужен твой допил
@@ -52,6 +54,8 @@ class ATSControler {
                 arrayOf(FileChooser.ExtensionFilter("Document files (*.py)", "*.py"))
             )
             file = files[0].toString()
+
+            enableFileProperty.set(file == "")
 
             checkCode()
         }
