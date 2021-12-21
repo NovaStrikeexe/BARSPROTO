@@ -1,20 +1,22 @@
 package ru.kgsu.tornadotest.controllers
 
 import javafx.beans.property.SimpleBooleanProperty
-import ru.kgsu.tornadotest.ui.MainTableTeacherView
-import tornadofx.*
 import javafx.beans.property.SimpleStringProperty
 import javafx.scene.control.Alert
-import javafx.scene.control.Tab
 import javafx.scene.control.TextArea
 import javafx.stage.FileChooser
 import ru.kgsu.tornadotest.data.Task
 import ru.kgsu.tornadotest.data.Teacher
+import ru.kgsu.tornadotest.domain.apr.TestBlock
+import ru.kgsu.tornadotest.ui.MainTableTeacherView
 import ru.kgsu.tornadotest.ui.MarkScreen
+import tornadofx.Controller
+import tornadofx.alert
 import tornadofx.chooseFile
+import tornadofx.find
 import java.io.File
 
-class ATSControler {
+class ATSController : Controller() {
 
     val teacher = Teacher("T123", "1234", "Артур Котов")
     val taskOne = Task(
@@ -28,16 +30,25 @@ class ATSControler {
                 "\nПрограмма должна завершаться только по желанию пользователя."
     )
 
-    private val typeOfFiles = arrayOf(FileChooser.ExtensionFilter("Document files (*.py)"))
+    //private val typeOfFiles = arrayOf(FileChooser.ExtensionFilter("Document files (*.py)"))
+    private val test = TestBlock(arrayListOf("1", "2", "3"), arrayListOf("1", "4", "9"))
 
+    fun showTestList() {
+        var text = "Входные параметры -> Выходные параметры для проверки\n"
+
+        test.args.forEachIndexed { i, arg ->
+            text += "$arg -> ${test.answers[i]}\n"
+        }
+
+        mainTextProperty.set(text)
+    }
+
+    //Зачем это? Почему все функции в объекте?
     companion object {
         var file = ""
-        val infoTestProperty = SimpleStringProperty()
+        val mainTextProperty = SimpleStringProperty()
         val enableFileProperty = SimpleBooleanProperty(true)
 
-        /***
-         * Мега выполнил свои задачи. Лекс тут нужен твой допил
-         */
         fun loadTest() {
             val files = chooseFile(
                 "",
@@ -45,9 +56,6 @@ class ATSControler {
             )
         }
 
-        /***
-         * Мега выполнил свои задачи
-         */
         fun loadCode() {
             val files = chooseFile(
                 "",
@@ -60,30 +68,17 @@ class ATSControler {
             checkCode()
         }
 
-        /***
-         * Экз это для тебя задачка, на крайний случай нужно воткнуть заглушку
-         */
-        fun launchTest() {
-
-        }
-
-        /***
-         * Мега выполнил свои задачи
-         */
         fun showTaskText(taskCodeField: TextArea) {
             taskCodeField.setVisible(true)
         }
 
-        /***
-         * Мега выполнил свои задачи
-         */
         fun showStudetCode() {
-            infoTestProperty.set(File(file).readText())
+            mainTextProperty.set(File(file).readText())
         }
 
 
         fun showCheckCode() {
-            infoTestProperty.set(File("log.txt").readText())
+            mainTextProperty.set(File("log.txt").readText())
         }
 
         fun checkCode() {
@@ -94,13 +89,6 @@ class ATSControler {
             Runtime.getRuntime().exec("check.bat")
 
             showCheckCode()
-        }
-
-        /***
-         * Экз это для тебя задачка
-         */
-        fun showTestList() {
-
         }
 
         fun showMarkSetter() {
@@ -123,8 +111,7 @@ class ATSControler {
                     "Ошибка",
                     "Задание с данным номером не найдено"
                 )
-            }
-            else{
+            } else{
                 alert(
                     Alert.AlertType.INFORMATION,
                     "Информация",
