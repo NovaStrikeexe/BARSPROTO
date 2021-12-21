@@ -1,10 +1,7 @@
 package ru.kgsu.tornadotest.ui
 
-import javafx.beans.property.SimpleStringProperty
-import javafx.scene.control.Alert
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
-import ru.kgsu.tornadotest.controllers.ATSControler
 import ru.kgsu.tornadotest.controllers.MainTableStudentController
 import ru.kgsu.tornadotest.data.Discepline
 import ru.kgsu.tornadotest.data.Student
@@ -54,41 +51,9 @@ class MainTableStudentView() : View() {
             }
         }
         tab("Авто Проверка") {
-            val nmbOfTask = SimpleStringProperty(this, "nmbOfTask", config.string("nmbOfTask"))
+            isClosable = false
             borderpane {
-                left = vbox {
-                    textflow {
-                        text(
-                            "Пользователь:${student.fio}"
-                        ) {
-                            fill = Color.PURPLE
-                            font = Font(20.0)
-                        }
-                    }
-                    separator {
-                    }
-                    fieldset() {
-                        fieldset("Номер задачи") {
-                            textfield(nmbOfTask)
-                        }
-                    }
-                    button("Поиск задачи").action {
-                        ATSControler.findTask(nmbOfTask.value)
-                    }
-                    button("Просмотр условия задачи").action {
-                        alert(
-                            Alert.AlertType.INFORMATION,
-                            "Условие задачи: ${taskOne.numberOfTask}",
-                            "${taskOne.textOfTask}",
-                            owner = currentWindow
-                        )
-                    }
-                    button("Показать результаты авто тестирования").action {
-                        ATSControler.showAutoTestResult()
-                    }
-                }
                 center = APRView().root
-
             }
 
         }
