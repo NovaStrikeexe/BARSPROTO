@@ -15,23 +15,36 @@ class APRView : View() {
     override val root = vbox {
         alignment = Pos.TOP_CENTER
 
-        val taCode = textarea(controller.taCodeTextProperty) {
+        spacer { setMaxSize(.0, 10.0) }
+        combobox<String> {
+            valueProperty().addListener(controller.changeListener)
+
+            items = controller.taskNamesObservableList
+        }
+        spacer { setMaxSize(.0, 10.0) }
+
+        textarea(controller.taCodeTextProperty) {
             isEditable = false
         }
 
         spacer { setMaxSize(.0, 10.0) }
         hbox {
+            spacer{setMaxSize(10.0, .0)}
             label(controller.okAnswersProperty)
             spacer()
             progressbar(controller.progressProperty)
+            spacer{setMaxSize(10.0, .0)}
         }
         spacer { setMaxSize(.0, 10.0) }
 
-        val btnUploadCode = button("Загрузить файл с кодом и проверить") {
+        button("Загрузить файл с кодом и проверить") {
+            disableProperty().bind(controller.buttonDisabledProperty)
+
             style {
                 fontFamily = "Comic Sans MS"
                 fontSize = 20.px
             }
+
 
             action {
                 val file =
