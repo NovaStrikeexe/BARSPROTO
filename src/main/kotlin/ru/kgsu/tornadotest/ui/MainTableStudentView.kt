@@ -7,6 +7,7 @@ import ru.kgsu.tornadotest.data.Discepline
 import ru.kgsu.tornadotest.data.Student
 import ru.kgsu.tornadotest.data.Task
 import ru.kgsu.tornadotest.data.Teacher
+import ru.kgsu.tornadotest.data.Mark
 import tornadofx.*
 
 class MainTableStudentView() : View() {
@@ -17,7 +18,18 @@ class MainTableStudentView() : View() {
     val disceplineThree = Discepline("Функциональное программирование", teacher, 4.7f);
     val listOfDiscepline = listOf(disceplineOne, disceplineTwo, disceplineThree)
     val student =
-        Student("7894563Student2", "7896543", "Aнна Мишкина", 3002222, listOfDiscepline)
+        Student("7894563Student2", "7896543", "Aнна Мишкина", 3002222, listOfDiscepline,3.6f, 3.7f, 3.8f)
+    val student1 =
+        Student("7894563Student2", "7896543", "Aнна Мишкина", 3002222, listOfDiscepline, 3.6f, 3.7f, 3.8f)
+    val student2 =
+        Student("7894563Student2", "7896543", "Паймон Вкотле", 3002222, listOfDiscepline, 4.3f, 4.4f, 3.5f)
+    val student3 =
+        Student("7894563Student2", "7896543", "Тортик Британский", 3002222, listOfDiscepline, 4.6f, 4.7f, 4.8f)
+    val Marks = listOf(
+        Mark(1, "${student1.fio}", student1.sMarkVPP, student1.sMarkOOP, student1.sMarkFP),
+        Mark(2, "${student2.fio}", student2.sMarkVPP, student2.sMarkOOP, student2.sMarkFP),
+        Mark(3, "${student3.fio}", student3.sMarkVPP, student3.sMarkOOP, student3.sMarkFP),
+    ).asObservable()
     val taskOne = Task(
         10001,
         "Лабораторная работа",
@@ -42,22 +54,29 @@ class MainTableStudentView() : View() {
                         font = Font(20.0)
                     }
                 }
-                button("Предметы").action {
+                tableview(Marks) {
+                    readonlyColumn("ID", Mark::id)
+                    readonlyColumn("Name", Mark::mName)
+                    readonlyColumn("VPP", Mark::MarkVPP)
+                    readonlyColumn("OOP", Mark::MarkOOP)
+                    readonlyColumn("FP", Mark::MarkFP)
+                    /*(button("Предметы").action {
                     mainTableStudentController.showStudentDisceplines()
                 }
                 button("Оценки").action {
                     mainTableStudentController.ShowStudentMarks()
+                }*/
                 }
             }
-        }
-        tab("Авто Проверка") {
-            isClosable = false
-            borderpane {
-                center = APRView().root
+            tab("Авто Проверка") {
+                isClosable = false
+                borderpane {
+                    center = APRView().root
+                }
+
             }
-
         }
-    }
 
+    }
 }
 
